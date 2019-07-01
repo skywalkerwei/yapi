@@ -1,0 +1,28 @@
+{
+    "name": "kyle/ycpai",
+    "description": "The ThinkPHP5 Api Doc Package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Api\\Doc\\": "src"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "skywalkerwei",
+            "email": "skywalkerwei@gmail.com"
+        }
+    ],
+    "require": {
+        "topthink/think-helper": ">=1.0.4",
+        "topthink/think-installer": ">=1.0.10"
+    },
+    "extra": {
+        "think-config": {
+            "doc": "src/config.php"
+        }
+    }
+}
