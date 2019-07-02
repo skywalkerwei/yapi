@@ -1,5 +1,5 @@
 {
-    "name": "skywalkerwei/yapi",
+    "name": "kyle/yapi",
     "description": "The ThinkPHP5 Api Doc Package",
     "license": "MIT",
     "autoload": {

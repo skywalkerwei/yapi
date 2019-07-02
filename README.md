@@ -3,7 +3,7 @@
 ### 使用方法
 ####1、安装扩展
 ```
-composer require kyle/ycpai
+composer require kyle/yapi
 ```
 
 ####2、配置参数
