@@ -179,7 +179,7 @@
             <strong>提示：此文档是由系统自动生成，如发现错误或疑问请告知开发人员及时修改</strong>
             <strong id="testxm"> {if condition="isset($doc.header) && !empty($doc.header)"}
               {volist name="doc.header" id="head"}
-                "{$head.name}":{$head.default|default=''},
+                "{$head.name}":"{$head.default|default=''}",
                 {/volist}
                 {/if}</strong>
 
