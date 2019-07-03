@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label"><span class="badge">header</span> {$head.name|default=""}</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control" type="text" id="id{$k}" name="{$head.name}" value="{$head.default|default=''}">
+                                        <input class="form-control classHeaderInput" type="text" id="id{$k}" name="{$head.name}" value="{$head.default|default=''}">
                                     </div>
                                     <div class="col-sm-4"><label class="control-label text-warning"></label></div>
                                 </div>
@@ -123,7 +123,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{$param.name|default=""}</label>
                                 <div class="col-sm-6">
-                                    <input class="form-control" type="text" name="{$param.name|default=''}" value="{$param.default|default=''}">
+                                    <input class="form-control  classParamInput" type="text" name="{$param.name|default=''}" value="{$param.default|default=''}">
                                 </div>
                                 <div class="col-sm-4"><label class="control-label text-warning"></label></div>
                             </div>
@@ -177,11 +177,11 @@
         <br/>
         <div role="alert" class="alert alert-info">
             <strong>提示：此文档是由系统自动生成，如发现错误或疑问请告知开发人员及时修改</strong>
-            <strong id="testxm"> {if condition="isset($doc.header) && !empty($doc.header)"}
+            <!-- <strong id="testxm"> {if condition="isset($doc.header) && !empty($doc.header)"}
               {volist name="doc.header" id="head"}
                 "{$head.name}":"{$head.default|default=''}",
                 {/volist}
-                {/if}</strong>
+                {/if}</strong> -->
 
         </div>
     </div>
@@ -279,13 +279,23 @@
 
         $("#send").click(function(){
             var $btn = $(this).button('loading');
-            var texts = '{'+$.trim($('#testxm').text()).slice(0,-1)+'}';
-           var text = JSON.parse($.trim(texts));
+            // var texts = '{'+$.trim($('#testxm').text()).slice(0,-1)+'}';
+
+            var classInputFields = $(".classHeaderInput").serializeArray();
+            var classParamFields = $(".classParamInput").serialize();
+            
+
+          //  var text = JSON.parse($.trim(texts));
+
+          //  console.log(getFormJson(classInputFields),text);
+   
+
+
             $.ajax({
                 type: $("#xmmethod_type").val(),
                 url:  $("#xmurl").val(),
-                data: $("#apiform").serialize(),
-                headers: text,
+                data: classParamFields,
+                headers: getFormJson(classInputFields),
                 dataType:'json',
                 success: function (data) {
                     window.json =JSON.stringify(data);
@@ -332,5 +342,23 @@
             $('#addJosnTextmModal').modal('hide');
         });
     }
+
+
+    function getFormJson(a) {
+      var o = {};
+      // var a = $(form).serializeArray();
+      $.each(a, function () {
+      if (o[this.name] !== undefined) {
+      if (!o[this.name].push) {
+      o[this.name] = [o[this.name]];
+      }
+      o[this.name].push(this.value || '');
+      } else {
+      o[this.name] = this.value || '';
+      }
+      });
+      return o;
+    }
+
 </script>
 {/block}
