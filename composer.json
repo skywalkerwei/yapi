@@ -2,6 +2,7 @@
     "name": "kyle/yapi",
     "description": "The ThinkPHP5 Api Doc Package",
     "license": "MIT",
+    "type": "think-extend",
     "autoload": {
         "psr-4": {
             "Api\\Doc\\": "src"
