@@ -167,6 +167,12 @@ A.OtherToolsLink:hover { text-decoration:underline; }
 .nav-tabs>li{margin-right: 10px; }
 .nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover{border: 1px solid #ddd; color:#555;}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{color:#00A881;}
-.panel-body{ margin: 15px; padding: 0; overflow-x: scroll; overflow-y: hidden;}
+.panel-body{ margin: 15px; padding: 0; overflow-x: scroll; }
 .panel-body .table{margin: 0;}
 code{font-size: 14px; background: none;color: #999}
+.form-horizontal .form-group{margin-left: 0; margin-right: 0;}
+textarea.form-control{min-height: 120px;}
+.gray-line{height: 5px; background: #f6f5ec; border-radius: 2px;}
+.form-group h4{color: #00A881;}
+.flexBox{display: flex; justify-content: space-between;}
+
