@@ -130,7 +130,7 @@
                     <div class="panel-heading" style="border-color: #00A881;background-color: #00A881">
                         <h3 class="panel-title">接口参数</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="overflow-x: hidden;">
                         <form id="apiform" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">接口地址</label>
@@ -185,6 +185,7 @@
                                 <div class="col-sm-6"><h4>参数</h4></div>
                                 <div class="col-sm-4"></div>
                             </div>
+
                             {if condition="isset($doc.param)"}
                             {volist name="doc.param" id="param"}
                             <div class="form-group">
@@ -196,16 +197,15 @@
                             </div>
                             {/volist}
                             {/if}
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;</label>
-                                <div class="col-sm-6 flexBox">
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addParamModal">
-                                        <span class="glyphicon glyphicon-plus"></span> 增加参数</button>
-                                    <button type="button" id="send" class="btn btn-success" data-loading-text="Loading..." autocomplete="off">发送测试</button>
-                                </div>                           
-                            </div>
-
                         </form>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;</label>
+                            <div class="col-sm-6 flexBox">
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addParamModal">
+                                    <span class="glyphicon glyphicon-plus"></span> 增加参数</button>
+                                <button type="button" id="send" class="btn btn-success" data-loading-text="Loading..." autocomplete="off">发送测试</button>
+                            </div>                           
+                        </div>
                     </div>
                 </div>
                 <!--head-->
@@ -326,7 +326,7 @@
 <script type="text/javascript">
     $(function () {
         $('#addParamModal').on('show.bs.modal', function () {
-            init();
+            // init();
         })
         $('#addParamModal').on('hide.bs.modal', function () {
             //关闭
@@ -389,7 +389,7 @@
 
         // 添加自定义json
         $('#addJosnTextmModal').on('show.bs.modal', function () {
-            init();
+            // init();
         })
         $('#addJosnTextmModal').on('hide.bs.modal', function () {
             //关闭
@@ -398,7 +398,8 @@
         window.ImgExpanded = "{$static}/img/Expanded.gif";
     });
 
-    function init(){
+    // function init(){
+
         $("#addParam").click(function(){
             var name = $('input[name="addparam"]').val();
             if(name.length > 0){
@@ -417,7 +418,7 @@
             Process();
             $('#addJosnTextmModal').modal('hide');
         });
-    }
+    // }
 
 
     function getFormJson(a) {
