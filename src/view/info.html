@@ -7,12 +7,12 @@
 {block name="main"}
 <div class="container">
     <div class="jumbotron">
-        <p class="bg-success" style="font-size: 18px;">文档地址：{$root}/doc?name={$doc['name']}</p>
-        <h2>接口：{$doc.title|default="请设置title注释"}</h2>
-        <p>接口地址：{$doc.url|default="请设置url注释"} <span class="label label-success">{$doc.method|default='GET'}</span></p>
-        <p class="text-primary">{$doc.title|default="请设置title注释"} -- {$doc.author|default="请设置auhtor注释"}</p>
-        <br/>
-        <p><strong>{$doc.description|default=""}</strong></p><br/>
+        <!-- <p class="bg-success" style="font-size: 18px;">文档地址：{$root}/doc?name={$doc['name']}</p> -->
+        <h2>{$doc.title|default="请设置title注释"}</h2>
+        <p>地址：{$doc.url|default="请设置url注释"} <span class="label label-success">{$doc.method|default='GET'}</span></p>
+        <!-- <p class="text-primary">{$doc.title|default="请设置title注释"} -- {$doc.author|default="请设置auhtor注释"}</p>
+        <br/> -->
+        <p class="bg-success">{$doc.description|default=""}</p>
 
         <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#info" data-toggle="tab">接口信息</a></li>
@@ -21,8 +21,28 @@
         <div class="tab-content">
             <!--info-->
             <div class="tab-pane fade in active" id="info">
+            <br>
                 {if condition="isset($doc.header) &&  !empty($doc.header)"}
-                <h3>请求Headers</h3>
+                <div class="panel panel-primary" style="border-color: #00A881;">
+                    <div class="panel-heading" style="border-color: #00A881;background-color: #00A881">
+                        <h3>请求Headers</h3>
+                    </div>
+                    <div class="panel-body" id="span_result">
+                        <table class="table table-striped" > <!-- style="table-layout: fixed" -->
+                            <tr><th style="min-width: 100px">名称</th><th style="min-width: 100px">是否必填</th><th style="min-width: 100px">默认值</th><th>说明</th></tr>
+                            {volist name="doc.header" id="head"}
+                            <tr>
+                                <td>{$head.name|default="-"}</td>
+                                <td>{if condition="$head.require eq 1"}必填{else/}非必填{/if}</td>
+                                <td>{$head.default|default="-"}</td>
+                                <td>{$head.desc|default="-"}</td>
+                            </tr>
+                            {/volist}
+                        </table>
+                    </div>
+                </div>
+
+                <!-- <h3>请求Headers</h3>
                 <table class="table table-striped" >
                     <tr><th>名称</th><th>是否必须</th><th>默认值</th><th>说明</th></tr>
                     {volist name="doc.header" id="head"}
@@ -34,10 +54,30 @@
                     </tr>
                     {/volist}
                 </table>
-                <br>
+                <br> -->
                 {/if}
                 {if condition="isset($doc.param)"}
-                <h3>接口参数</h3>
+                <div class="panel panel-primary" style="border-color: #00A881;">
+                    <div class="panel-heading" style="border-color: #00A881;background-color: #00A881">
+                        <h3>接口参数</h3>
+                    </div>
+                    <div class="panel-body" id="span_result">
+                        <table class="table table-striped" >
+                            <tr><th>参数名字</th><th>类型</th><th>是否必须</th><th>默认值</th><th>其他</th><th>说明</th></tr>
+                            {volist name="doc.param" id="param"}
+                            <tr>
+                                <td>{$param.name|default="-"}</td>
+                                <td>{$param.type|default="-"}</td>
+                                <td>{if condition="$param.require eq 1"}必填{else/}非必填{/if}</td>
+                                <td>{$param.default|default="-"}</td>
+                                <td>{$param.other|default="-"}</td>
+                                <td>{$param.desc|default="-"}</td>
+                            </tr>
+                            {/volist}
+                        </table>
+                    </div>
+                </div>
+               <!--  <h3>接口参数</h3>
                 <table class="table table-striped" >
                     <tr><th>参数名字</th><th>类型</th><th>是否必须</th><th>默认值</th><th>其他</th><th>说明</th></tr>
                     {volist name="doc.param" id="param"}
@@ -51,17 +91,35 @@
                     </tr>
                     {/volist}
                 </table>
-                <br>
+                <br> -->
                 {/if}
                 {if condition="isset($doc.remark)"}
-                <h3>备注说明</h3>
+                <div class="panel panel-primary" style="border-color: #00A881;">
+                    <div class="panel-heading" style="border-color: #00A881;background-color: #00A881">
+                        <h3>备注说明</h3>
+                    </div>
+                    <div class="panel-body" id="span_result">
+                        <div role="alert" class="alert alert-info">
+                            {$doc.remark|default="无"}
+                        </div>
+                    </div>
+                </div>
+                <!-- <h3>备注说明</h3>
                 <div role="alert" class="alert alert-info">
                     {$doc.remark|default="无"}
                 </div>
-                <br>
+                <br> -->
                 {/if}
-                <h3>返回结果</h3>
-                <p><code id="json_text">{$return}</code></p>
+                <div class="panel panel-primary" style="border-color: #00A881;">
+                    <div class="panel-heading" style="border-color: #00A881;background-color: #00A881">
+                        <h3>返回结果</h3>
+                    </div>
+                    <div class="panel-body" id="span_result">
+                        <p><code id="json_text">{$return}</code></p>
+                    </div>
+                </div>
+                <!-- <h3>返回结果</h3>
+                <p><code>de id="json_text">{$return}</code></p> -->
             </div>
             <!--info-->
             <!--test-->

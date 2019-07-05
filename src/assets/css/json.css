@@ -150,3 +150,23 @@ A.OtherToolsLink:hover { text-decoration:underline; }
 
 .result_body{ margin-bottom: 10px;}
 .result_body *{ margin-right:10px;}
+
+
+
+
+
+.container{width: auto; padding: 15px;}
+.container .jumbotron, .container-fluid .jumbotron{
+  padding: 20px 40px;
+}
+.jumbotron .bg-success{background: none;font-size:14px;}
+.container h2{font-size:28px; line-height: 2; }
+.container h3{font-size:22px; margin: 0;}
+.jumbotron p{font-size:20px;}
+.jumbotron .label-success{font-size:14px; padding: 2px 6px; margin-left: 10px;}
+.nav-tabs>li{margin-right: 10px; }
+.nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover{border: 1px solid #ddd; color:#555;}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{color:#00A881;}
+.panel-body{ margin: 15px; padding: 0; overflow-x: scroll; overflow-y: hidden;}
+.panel-body .table{margin: 0;}
+code{font-size: 14px; background: none;color: #999}
